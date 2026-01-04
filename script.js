@@ -4,19 +4,18 @@ inputs[0].focus();
 
 inputs.forEach((input, index) => {
 
-    input.addEventListener('input', (e) => {
-        if (e.target.value && index < inputs.length - 1) {
+     
+    input.addEventListener('input', () => {
+        if (input.value && index < inputs.length - 1) {
             inputs[index + 1].focus();
         }
     });
 
+     
     input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace') {
-            if (input.value === '' && index > 0) {
-                inputs[index - 1].focus();
-            } else {
-                input.value = '';
-            }
+        if (e.key === 'Backspace' && index > 0) {
+            input.value = '';
+            inputs[index - 1].focus();
         }
     });
 });
